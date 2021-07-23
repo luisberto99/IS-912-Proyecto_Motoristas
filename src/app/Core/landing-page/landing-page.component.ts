@@ -12,4 +12,13 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  unirse(){
+    console.log("unirse....");
+
+  }
+
+  ingresar(){
+    console.log("ingresar....");
+    
+  }
 }
