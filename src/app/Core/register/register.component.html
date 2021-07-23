@@ -1,0 +1,47 @@
+
+<div class="contFormRegister">
+    <form method="POST" class="form" [formGroup]="formRegister" (ngSubmit)= "registrar()">
+        
+        <!-- <img src="assets/imgs/lima.png" alt="logoLima" class="imgLima"> -->
+        <div class="boxForm">
+            <h2 class="textTitulo">Registro Motorista</h2>
+
+            <div class="group">
+                <input type="text" formControlName="primerNombre" required><span class="barra"></span>
+                <label for="">Primer Nombre</label>
+            </div>
+            <div class="group">
+                <input type="text" formControlName="primerApellido"  required><span class="barra"></span>
+                <label for="">Primer Apellido</label>
+            </div>
+            <div class="group">
+                <input type="text" formControlName="identidad" required><span class="barra"></span>
+                <label for="">Numero de identidad</label>
+            </div>
+            <div class="group">
+                <input type="text" formControlName="domicilio" required><span class="barra"></span>
+                <label for="">Domicilio</label>
+            </div>
+            <div class="group">
+                <input type="text" formControlName="telefono" required><span class="barra"></span>
+                <label for="">Telefono</label>
+            </div>
+            <div class="group">
+                <input type="text" formControlName="email" required><span class="barra"></span>
+                <label for="">Email</label>
+            </div>
+            <div class="group">
+                <input type="password" formControlName="password"  required><span class="barra"></span>
+                <label for="">Password</label>
+            </div>
+            <div class="group">
+                <input type="password" formControlName="passwordConfirm" required><span class="barra"></span>
+                <label for="">Password</label>
+            </div>
+            <!-- <button (click)= "continuarRegistro()">Continuar</button> -->
+            <button type="submit">Registrarme</button>
+        </div>
+    </form>
+
+    
+</div>
