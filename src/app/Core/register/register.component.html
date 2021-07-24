@@ -8,38 +8,52 @@
 
             <div class="group">
                 <input type="text" formControlName="primerNombre" required><span class="barra"></span>
-                <label for="">Primer Nombre</label>
+                <label >Primer Nombre</label>
             </div>
             <div class="group">
                 <input type="text" formControlName="primerApellido"  required><span class="barra"></span>
-                <label for="">Primer Apellido</label>
+                <label >Primer Apellido</label>
             </div>
             <div class="group">
                 <input type="text" formControlName="identidad" required><span class="barra"></span>
-                <label for="">Numero de identidad</label>
+                <label >Numero de identidad</label>
             </div>
             <div class="group">
                 <input type="text" formControlName="domicilio" required><span class="barra"></span>
-                <label for="">Domicilio</label>
+                <label >Domicilio</label>
             </div>
             <div class="group">
                 <input type="text" formControlName="telefono" required><span class="barra"></span>
-                <label for="">Telefono</label>
+                <label >Telefono</label>
             </div>
             <div class="group">
-                <input type="text" formControlName="email" required><span class="barra"></span>
-                <label for="">Email</label>
+                <input type="text" formControlName="email" required><span class="barra" ></span>
+                <label >Email</label>
             </div>
             <div class="group">
                 <input type="password" formControlName="password"  required><span class="barra"></span>
-                <label for="">Password</label>
+                <label >Password</label>
             </div>
             <div class="group">
                 <input type="password" formControlName="passwordConfirm" required><span class="barra"></span>
-                <label for="">Password</label>
+                <label >Password</label>
             </div>
-            <!-- <button (click)= "continuarRegistro()">Continuar</button> -->
-            <button type="submit">Registrarme</button>
+            <div class="errores" >
+                <p class="msjError" *ngIf="email?.invalid && (email?.touched || email?.dirty)">**Error Correo incorrecto</p>
+                <p class="msjError" *ngIf="identidad?.status == 'INVALID' && (identidad?.touched || identidad?.dirty)">**Error numero de indentidad incorrecta, ingresarla sin guiones o espacios.</p>
+                <p class="msjError" *ngIf="telefono?.invalid && (telefono?.touched || telefono?.dirty)">**Error numero de telefono.</p>
+                <p class="msjError" *ngIf="name?.invalid && (name?.touched || name?.dirty)">**Error ingrese su Primer Nombre porfavor.</p>
+                <p class="msjError" *ngIf="apellido?.invalid && (apellido?.touched || apellido?.dirty)">**Error ingrese su Primer Apellido porfavor.</p>
+                <p class="msjError" *ngIf="password?.status == 'INVALID' && (password?.touched || password?.dirty)">**La Contraseña debe tener al menos 1 digito, 1 letra mayuscula, 1 letra minuscula y 1 caracter especial</p>
+                <p class="msjError" *ngIf="passwordConfirm != password?.value && (passwordConfirm?.touched || passwordConfirm?.dirty)">**Las Contraseñas no coinciden.</p>
+            </div>
+            <button *ngIf="this.formRegister.valid" type="submit" >Registrarme</button>
+
+            <div class="notaUser">
+                <p *ngIf="this.formRegister.valid" class="msj">
+                    <b>NOTA:</b>Pasaran a ser verificados sus datos por nuestro equipo y de ser validos, sera habilitado para trabajar con nosotros.
+                </p>
+            </div>
         </div>
     </form>
 
