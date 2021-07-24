@@ -6,30 +6,28 @@ $Dark: #053D1E
 $Black: #000000
 $White: #FFFFFF
 
-.contFormRegister
+.contLogin
     width: auto
-    height: auto
-    display: flex
-    justify-content: center
-    align-items: center
-    // background-color: $Secundary
+    height: 100vh
     background-color: $Background
+    padding: 2.5rem 0.5rem
     
+    .imgLima
+        width: 250px
     .form
         margin-top: 1rem
-        width: 95%
-        .boxForm
+        width: 100%
+        .contForm
             width: auto
             padding: 3rem 0
             background-color: $White
             box-shadow: 0 0 7px 0 #0000005e
             border-radius: 0.9rem
-
-            .textTitulo
-                text-align: center
-                font-weight: 600
-                font-size: 2rem
-            .group
+        .textTitulo
+            text-align: center
+            font-weight: 600
+            font-size: 2rem
+        .group
                 position: relative
                 margin: 2rem 1.9em
                 // padding: 1rem
@@ -76,33 +74,37 @@ $White: #FFFFFF
                 input:focus~.barra::before
                     width: 100%
 
-
                 input:focus
                     outline: none
                     color: $Dark
-            button
-                width: 90%
-                margin-left: 5%
-                padding: 0.8em 0
-                font-size: 1.2rem
-                background-color: $Primary
-                border: none
-                border-radius: 10px
-                color: $White
-                font-weight: bold
-            .notaUser
-                width: 80%
-                margin-left: 10%
-                .msj
-                    font-size: 14px
-                    color: $Dark
-            .errores
-                width: 80%
-                margin-left: 5%
-                margin-bottom: 1rem
+        button
+            width: 90%
+            margin-left: 5%
+            padding: 0.8em 0
+            font-size: 1.2rem
+            background-color: $Primary
+            border: none
+            border-radius: 10px
+            color: $White
+            font-weight: bold
 
-                .msjError
-                    color: red
-                    font-weight: 600
-                    font-size: 13px
-                    margin-bottom: 5px
+        .errores
+            width: 80%
+            margin-left: 5%
+            margin-bottom: 1rem
+            .msjError
+                color: red
+                font-weight: 600
+                font-size: 13px
+                margin-bottom: 5px
+            
+        .textOlv
+            width: 100%
+            text-align: center
+            margin-top: 5px
+            cursor: pointer
+
+        .textOlv:hover
+            text-decoration: underline
+            transition: text-decoration .5s
+            // color: $Secundary

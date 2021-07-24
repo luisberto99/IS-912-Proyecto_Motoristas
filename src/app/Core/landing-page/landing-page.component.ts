@@ -13,14 +13,13 @@ export class LandingPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  unirse(){
-    console.log("unirse....");
-    this.router.navigate(['register'])
-
+  register(){
+    this.router.navigate(['register']);
+    
   }
-
+  
   ingresar(){
-    console.log("ingresar....");
+    this.router.navigate(['login']);
     
   }
 }

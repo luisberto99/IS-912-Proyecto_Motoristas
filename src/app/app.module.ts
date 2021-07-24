@@ -9,6 +9,7 @@ import { RegisterComponent } from './Core/register/register.component';
 
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './Core/login/login.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     LandingPageComponent,
     RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
