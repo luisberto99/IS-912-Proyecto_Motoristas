@@ -1,9 +1,33 @@
 <div class="contLogin">
     
-    <form action="" class="form">
+    <div class="img">
+        <img src="assets/imgs/lima.png" class="imgLima" alt="LogoLima">
+    </div>
+    <form action="POST" [formGroup]="formLogin" class="form" (ngSubmit)="login()">
+
         <div class="contForm">
-            
+            <h2 class="textTitulo">Iniciar Sesión</h2>
+
+            <div class="group">
+                <input type="text" formControlName="email" required><span class="barra"></span>
+                <label >Email</label>
+            </div>
+
+            <div class="group">
+                <input type="password" formControlName="password"  required><span class="barra"></span>
+                <label >Password</label>
+            </div>
+            <div class="errores" >
+                <p class="msjError" *ngIf=" email?.status == 'INVALID' && (email?.touched || email?.dirty)">**<b>Error</b> Correo incorrecto, ingrese uno valido.**</p>
+                <p class="msjError" *ngIf="password?.status == 'INVALID' && (password?.touched || password?.dirty)">**La Contraseña debe tener al menos 1 digito, 1 letra mayuscula, 1 letra minuscula y 1 caracter especial</p>
+            </div>
+
+            <button type="submit" >Iniciar Sesión</button>
+            <div class="textOlv" (click)="recoverPassword()">
+                <p >¿Olvidaste tu contraseña?</p>
+            </div>
         </div>
+
     </form>
 
 </div>
