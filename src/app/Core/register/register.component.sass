@@ -1,0 +1,111 @@
+$Primary: #11D469
+$Secundary: #0DA351
+$Background: #DBDBDB
+$Alert: #FEF102
+$Dark: #053D1E
+$Black: #000000
+$White: #FFFFFF
+
+.contFormRegister
+    width: auto
+    height: auto
+    display: flex
+    justify-content: center
+    align-items: center
+    // background-color: $Secundary
+    background-color: $Background
+    .imgLima
+        width: 100px
+        height: auto
+        float: left
+    .form
+        margin-top: 1rem
+        width: 95%
+        .boxForm
+            width: auto
+            padding: 3rem 0
+            background-color: $White
+            box-shadow: 0 0 7px 0 #0000005e
+            border-radius: 0.9rem
+
+            .textTitulo
+                text-align: center
+                font-weight: 600
+                font-size: 2rem
+            .group
+                position: relative
+                margin: 2rem 1.9em
+                // padding: 1rem
+                font-size: 1rem
+                width: auto
+                input
+                    width: auto
+                    display: block
+                    font-size: 1.4rem
+                    background: none 
+                    color: $Dark
+                    padding: 10px 10px 10px 5px 
+                    width: 100%
+                    border: none
+                    border-bottom: 1px solid $Secundary
+                label
+                    width: 100%
+                    color:  #bebdbd
+                    font-size: 1.3rem
+                    position: absolute
+                    left: 5px
+                    top: 10px
+                    transtion: 0.5s ease-in-out all
+                    pointer-events: none
+                    // bottom: 0
+                .barra
+                    position: relative
+                    display: block
+                    width: 100%
+                .barra::before
+                    content: ''
+                    height: 2px
+                    width: 0
+                    bottom: 0
+                    position: absolute
+                    background: $Secundary
+                    transition: 0.3s ease width
+                    left: 0    
+                    
+                input:focus~label, input:valid~label
+                    top: -14px
+                    font-size: 12px
+                    color: $Secundary
+                input:focus~.barra::before
+                    width: 100%
+
+
+                input:focus
+                    outline: none
+                    color: $Dark
+            button
+                width: 90%
+                margin-left: 5%
+                padding: 0.8em 0
+                font-size: 1.2rem
+                background-color: $Primary
+                border: none
+                border-radius: 10px
+                color: $White
+                font-weight: bold
+            .notaUser
+                width: 80%
+                margin-left: 10%
+                .msj
+                    font-size: 14px
+                    color: $Dark
+            .errores
+                width: 80%
+                margin-left: 5%
+                margin-bottom: 1rem
+
+                .msjError
+                    color: red
+                    font-weight: 600
+                    font-size: 13px
+                    margin-bottom: 5px
