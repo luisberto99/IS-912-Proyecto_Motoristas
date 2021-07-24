@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   login(){
     if(this.email?.value == this.user.email && this.password?.value == this.user.password && this.formLogin.valid == true){
       console.log('usuario valido');
-      // this.route.navigate(['login']);
+      this.route.navigate(['biker']);
     }else{
       console.log(this.formLogin.valid);
       
