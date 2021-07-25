@@ -58,6 +58,7 @@ export class OrdersTakenComponent implements OnInit {
 
   sucessOrden(){
     console.log(this.ordenSelect.nombreCliente.length);
-    
+    this.ordenSelect.estadoOrden = 'entregada';
+    this.serviceShared.guardarData(this.ordenSelect);
   }
 }

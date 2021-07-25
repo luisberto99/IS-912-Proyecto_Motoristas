@@ -11,7 +11,7 @@ export class OrdersAvailableService {
     ubicacionEntrega: "Col. Aleman",
     nombreCliente: "Jose",
     coordenadas: "",
-    fechaRealizada:'',
+    fechaRealizada:'25/7/2021',
     informacionPago:[],
     codigoVerificacion: '1111',
     productos: [{
@@ -39,7 +39,7 @@ export class OrdersAvailableService {
     ubicacionEntrega: "Col. Trapiche",
     nombreCliente: "Luis",
     coordenadas: "",
-    fechaRealizada:'',
+    fechaRealizada:'25/7/2021',
     informacionPago:[],
     codigoVerificacion: '1111',
     productos: [{
@@ -75,7 +75,7 @@ export class OrdersAvailableService {
     ubicacionEntrega: "Col. Buenos Aires",
     nombreCliente: "Leo",
     coordenadas: "",
-    fechaRealizada:'',
+    fechaRealizada:'25/7/2021',
     informacionPago:[],
     codigoVerificacion: '1111',
     productos: [{
@@ -96,7 +96,7 @@ export class OrdersAvailableService {
   ubicacionEntrega: "Comayaguela Sur",
   nombreCliente: "Maria",
   coordenadas: "",
-  fechaRealizada:'',
+  fechaRealizada:'25/7/2021',
   informacionPago:[],
   codigoVerificacion: '1111',
   productos: [{
