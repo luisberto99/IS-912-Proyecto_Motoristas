@@ -1,45 +1,77 @@
-<div class="contOrders">
+<div  class="contOrders" [ngClass]="{ocult:viewProducto}">
     <p class="mjsCont">Bienvenido Luis, seleccione la orden de su interes, para ver los detalles.</p>
-    
-    <div class="rowContainer">
+    <div *ngFor="let orden of data">
+        <div class="rowContainer" (click)="viewDetail(orden)">
 
-        <div class="itemNum">
-            <h4>1</h4>
-        </div>
+            <div class="itemNum">
+                <h4>{{orden.id}}</h4>
+            </div>
 
-        <div class="itemData">
-            <div class="contDirection">
-                <!-- icono svg -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                    <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
-                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                </svg>
-                
-            </div>
-            <div class="contList">
-                
+            <div class="itemData">
+                <div class="contDirection">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    </svg>
+                    <p class="textLocation">{{orden.ubicacionEntrega}}</p>
+                </div>
+
+                <div class="contList">
+                    <p class="products">Productos:</p>
+                    <ul *ngFor="let product of orden.productos">
+                        <li>{{product.nombreProducto}}</li>
+                        <!-- <li>Lorem Ipsum</li>
+                        <li>Lorem Ipsum</li>
+                        <li>Lorem Ipsum</li> -->
+                    </ul>
+                </div>
+
             </div>
         </div>
-    
     </div>
-    <div class="rowContainer">
-
-        <div class="itemNum">
-            <h4>2</h4>
-        </div>
-
-        <div class="itemData">
-            <div class="contDirection">
-
-            </div>
-            <div class="contList">
-
-            </div>
-        </div>
-    
-    </div>
-
-
-
 </div>
 
+
+<div class="contModal" [ngClass]="{view:viewProducto}">
+
+    <div class="msjPrinc">
+        <svg (click) = "return()"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+        </svg>
+        <p>Detalle Orden</p>
+        <div class="barra"></div>
+    </div>
+
+    <div class="bodyModal">
+        <p class="textEmpre"><b>Cliente: </b>{{ordenView.nombreCliente}}</p>
+        <p class="textEmpre"><b>Direccion: </b>{{ordenView.ubicacionEntrega}}</p>
+
+        <div class="products">
+            <p><b>Productos:</b></p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>E. Distribuye</th>
+                    </tr>
+                </thead>
+                <tr *ngFor="let product of ordenView.productos">
+                    <td>{{product.nombreProducto}}</td>
+                    <td>{{product.cantidad}}</td>
+                    <td>{{product.empresaDistribuye}}</td>
+                </tr>                
+            </table>
+        </div>
+
+        <div class="location">
+            <p class="textUbicacion"><b>Ubicacion:</b></p>
+            <img src="assets/imgs/map.png" alt="map">
+
+        </div>
+
+        <p class="textCost"><b>Renumeracion:</b> 30 Lempiras.</p>
+        <button class="btnOrden" type="button"  (click)="tomarOrden(ordenView)">Tomar Orden</button>
+
+    </div>
+</div>
