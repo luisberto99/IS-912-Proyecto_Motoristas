@@ -1,0 +1,13 @@
+<div class="header">
+    <div class="imgHeader">
+        <img src="assets/imgs/limaOrdenes.png" alt="logoLima" class="LogoLima">
+        <img src="assets/imgs/avatar.png" alt="mi cuenta" class="avatarImg">
+    </div>
+    <div class="navBar">
+        <a [ngClass]="{ancorNav: this.optionSelect == 1}" (click)="option(1)" routerLink="ordersAvailable">Disponibles</a>
+        <a [ngClass]="{ancorNav: this.optionSelect == 2}" (click)="option(2)" routerLink="ordersTaken">Tomada</a>
+        <a [ngClass]="{ancorNav: this.optionSelect == 3}" (click)="option(3)" routerLink="ordersDelivered">Entregadas</a>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

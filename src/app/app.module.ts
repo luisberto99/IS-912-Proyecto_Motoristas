@@ -10,6 +10,8 @@ import { RegisterComponent } from './Core/register/register.component';
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './Core/login/login.component';
+import { LayoutDefaultComponent } from './layouts/layout-default/layout-default.component';
+import { LayoutUserComponent } from './layouts/layout-user/layout-user.component';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { LoginComponent } from './Core/login/login.component';
     LandingPageComponent,
     RegisterComponent,
     LoginComponent,
+    LayoutDefaultComponent,
+    LayoutUserComponent,
   ],
   imports: [
     BrowserModule,
