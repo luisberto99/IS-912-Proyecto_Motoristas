@@ -8,14 +8,14 @@ import { ServiceSharedService } from './../../services/service-shared.service';
   styleUrls: ['./orders-delivered.component.sass']
 })
 export class OrdersDeliveredComponent implements OnInit {
-  ordenTerminada = {
+  ordenesTerminadas:any = [{
     id: "",
     idOrden: "",
     idCliente: '',
     ubicacionEntrega: "",
     nombreCliente: "a",
     coordenadas: "",
-    fechaRealizada:'',
+    fechaRealizada:"",
     informacionPago:[],
     codigoVerificacion: 1,
     productos: [{
@@ -29,12 +29,14 @@ export class OrdersDeliveredComponent implements OnInit {
     nota: "",
     estadoOrden: "",
     Motorista:''
-  };
+  }];
 
   constructor( private serviceShared: ServiceSharedService) { }
 
   ngOnInit(): void {
-    this.ordenTerminada = this.serviceShared.dataFull()
+    this.ordenesTerminadas = this.serviceShared.getOrdenesTerminadas()
+    // console.log(this.ordenesTerminadas);
+    
   }
 
 }

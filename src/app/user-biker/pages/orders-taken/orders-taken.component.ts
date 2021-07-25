@@ -8,7 +8,6 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./orders-taken.component.sass']
 })
 export class OrdersTakenComponent implements OnInit {
-  
   codeForm = new FormControl('',[Validators.required, Validators.pattern('([0-9]){4}$')]);
   existData:boolean = false;
 
@@ -56,9 +55,14 @@ export class OrdersTakenComponent implements OnInit {
     return this.ordenSelect['nombreCliente'].length;
   }
 
+  get state(){
+    return this.ordenSelect.estadoOrden;
+  }
+
   sucessOrden(){
-    console.log(this.ordenSelect.nombreCliente.length);
+    // console.log(this.ordenSelect.nombreCliente.length);
     this.ordenSelect.estadoOrden = 'entregada';
-    this.serviceShared.guardarData(this.ordenSelect);
+    this.serviceShared.addOrdenTerminada(this.ordenSelect);
+
   }
 }

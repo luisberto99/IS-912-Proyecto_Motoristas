@@ -1,10 +1,10 @@
 
-<div class="contOrders">
-    <div> <!-- for -->
-        <div class="rowContainer">
 
+<div class="contOrders" >
+    <div> <!-- for -->
+        <div class="rowContainer" *ngFor="let ordenTerminada of ordenesTerminadas">
             <div class="itemNum">
-                <!-- <h4>{{orden.id}}</h4> -->
+                <h4>{{ordenTerminada.id}}</h4>
             </div>
 
             <div class="itemData">
@@ -18,13 +18,12 @@
 
                 <div class="contList">
                     <p class="products">Productos:</p>
-                    <!-- <ul *ngFor="let product of orden.productos">
+                    <ul *ngFor="let product of ordenTerminada.productos">
                         <li>{{product.nombreProducto}}</li>
-                    </ul> -->
+                    </ul>
                 </div>
-                <p><b>Fecha: </b></p>
+                <p><b>Fecha: </b>{{ordenTerminada.fechaRealizada}}</p>
                 <p><b>Renumeracion: </b>L. 30</p>
-
             </div>
         </div>
     </div>
