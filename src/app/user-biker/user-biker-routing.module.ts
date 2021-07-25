@@ -8,6 +8,7 @@ const routes: Routes = [
 
   {path:'',
   children:[
+    {path:'', redirectTo:'ordersAvailable',pathMatch:'full'},
     {path:'ordersAvailable', component: OrdersAvailableComponent},
     {path:'ordersTaken', component: OrdersTakenComponent},
     {path:'ordersDelivered', component: OrdersDeliveredComponent},

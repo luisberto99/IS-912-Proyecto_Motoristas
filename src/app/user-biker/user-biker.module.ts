@@ -5,7 +5,8 @@ import { UserBikerRoutingModule } from './user-biker-routing.module';
 import { OrdersAvailableComponent } from './pages/orders-available/orders-available.component';
 import { OrdersTakenComponent } from './pages/orders-taken/orders-taken.component';
 import { OrdersDeliveredComponent } from './pages/orders-delivered/orders-delivered.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,9 @@ import { OrdersDeliveredComponent } from './pages/orders-delivered/orders-delive
   ],
   imports: [
     CommonModule,
-    UserBikerRoutingModule
+    UserBikerRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class UserBikerModule { }
