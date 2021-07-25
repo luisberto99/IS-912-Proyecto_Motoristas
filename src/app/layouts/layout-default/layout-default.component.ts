@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout-default.component.sass']
 })
 export class LayoutDefaultComponent implements OnInit {
+  optionSelect:number = 0;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  option(num:number){
+    this.optionSelect = num
+  }
 }
