@@ -1,5 +1,6 @@
-import { OrdersAvailableService } from './service/orders-available.service';
 import { Component, OnInit } from '@angular/core';
+import { ServiceSharedService } from './../../services/service-shared.service';
+import { OrdersAvailableService } from './service/orders-available.service';
 
 @Component({
   selector: 'app-orders-available',
@@ -8,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrdersAvailableComponent implements OnInit {
   viewProducto:boolean = false;
-  data = this.serviceOA.data()
+  data = this.serviceOA.data();
+  selectOrden:boolean = false;
+
   ordenView = {
     ubicacionEntrega: '',
     nombreCliente:'',
@@ -18,14 +21,12 @@ export class OrdersAvailableComponent implements OnInit {
       nombreProducto: "",
       cantidad:"",
       empresaDistribuye: "",
-      idEmpresaDistribuye: ""
+      idEmpresaDistribuye: "",
+      estadoOrden: ""
   }]
-}
+  }
 
-
-
-
-  constructor(private serviceOA: OrdersAvailableService) { }
+  constructor(private serviceOA: OrdersAvailableService, private serviceShared:ServiceSharedService) { }
 
   ngOnInit(): void {
   }
@@ -33,20 +34,18 @@ export class OrdersAvailableComponent implements OnInit {
   viewDetail(orden:any){
     this.viewProducto = true;
     this.ordenView = orden;
-    // console.log(orden);
     
   }
   
   tomarOrden(ordenView:any){
-    console.log(ordenView);
-    // this.a = JSON.parse(this.a);
-    // console.log(this.data[0].productos[0]);
-    
+    ordenView.estadoOrden= 'tomada';
+    this.serviceShared.disparadorContenidoOrden.emit(ordenView);
+    this.serviceShared.guardarData(ordenView);
+    this.selectOrden= true;
   }
   
   return(){
-    this.viewProducto = false;
-    
+    this.viewProducto = false; 
   }
 
 }

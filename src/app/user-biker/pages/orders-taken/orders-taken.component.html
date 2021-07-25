@@ -1,5 +1,48 @@
-<div class="contOrders">
+<div class="contOrders" *ngIf="dato>1">
     
-    <p>orders-taken works!</p>
+    <div class="contVist" >
+        <div class="msjPrinc">
+            <p>Orden</p>
+            <div class="barra"></div>
+        </div>
+    
+        <div class="bodyVist">
+            <p class="textEmpre"><b>Cliente: </b>{{ordenSelect.nombreCliente}}</p>
+            <p class="textEmpre"><b>Direccion: </b>{{ordenSelect.ubicacionEntrega}}</p>
+    
+            <div class="products">
+                <p><b>Productos:</b></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>E. Distribuye</th>
+                        </tr>
+                    </thead>
+                    <tr *ngFor="let product of ordenSelect.productos"> 
+                        <td>{{product.nombreProducto}}</td>
+                        <td>{{product.cantidad}}</td>
+                        <td>{{product.empresaDistribuye}}</td>
+                    </tr>                
+                </table>
+            </div>
+    
+            <div class="location">
+                <p class="textUbicacion"><b>Ubicacion:</b></p>
+                <img src="assets/imgs/map.png" alt="map">
+            </div>
+            <p class="textCost"><b>Renumeracion:</b> 30 Lempiras.</p>
+            <p class="textCode">Al estar proximo a entregar su pedido, porfavor solicitar e ingresar el codigo de verificacion entregado al cliente, para verificar y realizar exitosamente la entrega.</p>
+            <p><b>Codigo:</b></p>
+            <input class="inputCode" [formControl]="codeForm" type="text" placeholder="Ingrese el codigo." required>
+            <p class="errorCode" *ngIf="codeForm.invalid && (codeForm?.touched || codeForm?.dirty)" >**Codigo invalido**</p>
+
+            <button class="btnOrden" type="button" *ngIf="codeForm.valid && codeForm.value == ordenSelect.codigoVerificacion" (click)="sucessOrden()"> Finalizar entrega</button>
+    
+        </div>
+    </div>
+    
+
 
 </div>

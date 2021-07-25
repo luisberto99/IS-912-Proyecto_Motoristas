@@ -71,7 +71,7 @@
         </div>
 
         <p class="textCost"><b>Renumeracion:</b> 30 Lempiras.</p>
-        <button class="btnOrden" type="button"  (click)="tomarOrden(ordenView)">Tomar Orden</button>
+        <button class="btnOrden" type="button" *ngIf="!selectOrden"  (click)="tomarOrden(ordenView)">Tomar Orden</button>
 
     </div>
 </div>
