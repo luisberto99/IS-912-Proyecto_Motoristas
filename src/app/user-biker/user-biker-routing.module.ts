@@ -1,3 +1,4 @@
+import { UserProfileSettingsComponent } from './pages/user-profile-settings/user-profile-settings.component';
 import { OrdersTakenComponent } from './pages/orders-taken/orders-taken.component';
 import { OrdersAvailableComponent } from './pages/orders-available/orders-available.component';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,7 @@ const routes: Routes = [
     {path:'ordersAvailable', component: OrdersAvailableComponent},
     {path:'ordersTaken', component: OrdersTakenComponent},
     {path:'ordersDelivered', component: OrdersDeliveredComponent},
+    {path:'profile', component: UserProfileSettingsComponent},
     {path:'**', redirectTo:'ordersAvailable'}
   ]
   }
