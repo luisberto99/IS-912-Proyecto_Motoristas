@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layout-default',
@@ -8,12 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class LayoutDefaultComponent implements OnInit {
   optionSelect:number = 0;
 
-  constructor() { }
+  constructor(private route:Router) { }
 
   ngOnInit(): void {
   }
 
   option(num:number){
     this.optionSelect = num
+  }
+
+  goProfile(){
+    this.route.navigate(['/biker/profile']);
   }
 }

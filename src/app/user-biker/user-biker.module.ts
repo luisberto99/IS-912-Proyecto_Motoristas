@@ -7,12 +7,14 @@ import { OrdersTakenComponent } from './pages/orders-taken/orders-taken.componen
 import { OrdersDeliveredComponent } from './pages/orders-delivered/orders-delivered.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { UserProfileSettingsComponent } from './pages/user-profile-settings/user-profile-settings.component';
 
 @NgModule({
   declarations: [
     OrdersAvailableComponent,
     OrdersTakenComponent,
-    OrdersDeliveredComponent
+    OrdersDeliveredComponent,
+    UserProfileSettingsComponent
   ],
   imports: [
     CommonModule,
