@@ -7,9 +7,29 @@
         <h2>Mi Perfil</h2>
         <div class="barra"></div>
     </div>
-    
 
+    <div class="infoProfile">
+        <img [src]="imgProfile" alt="userFoto">
+        <p class="name">Luis Alejandro Banegas</p>
+        <p class="email">Luisbanegas@gmail.com</p>
+    </div>
+    <div class="optionsProfile">
+        <p>Configuracion de la cuenta</p>
+        <button (click)="goPhotoProfile()"  [ngClass]="{btnConfig: clickBtn == 1}" type="button">Fotografia</button>
+        <button (click)="goProfile()" [ngClass]="{btnConfig: clickBtn == 2}" type="button">Perfil</button>
+        <button (click)="goSecurityProfile()" [ngClass]="{btnConfig: clickBtn == 3}" type="button">Seguridad</button>
+    </div>
 
+    <div class="configPhotoProfile" *ngIf="clickBtn == 1">
+
+        <input class="inputImg" type="file"  (click) = "imgsUpload($event)">
+        <div class="imgPrev">
+            <img [src]="previsualizacion" >
+            
+        </div>
+    </div>
+
+    <!-- <p>cerrar sesion</p> -->
 
 </div>
 
