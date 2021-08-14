@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class LayoutDefaultComponent implements OnInit {
   optionSelect:number = 0;
-
+  goProfileNow=false;
   constructor(private route:Router) { }
 
   ngOnInit(): void {
@@ -20,5 +20,17 @@ export class LayoutDefaultComponent implements OnInit {
 
   goProfile(){
     this.route.navigate(['/biker/profile']);
+  }
+
+  goConfigProfile(){
+    this.goProfileNow = true;
+  }
+  
+  return(){
+
+    this.goProfileNow = false;
+
+    // this.route.navigate(['/biker/ordersAvailable']);
+
   }
 }

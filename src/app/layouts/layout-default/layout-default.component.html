@@ -1,9 +1,17 @@
 <div class="header">
-    <div class="imgHeader">
-        <img src="assets/imgs/limaOrdenes.png" alt="logoLima" class="LogoLima">
-        <img routerLink="profile" src="assets/imgs/avatar.png" alt="mi cuenta" class="avatarImg">
+    <div class="textProfile" *ngIf="goProfileNow">
+        <svg routerLink="ordersAvailable" (click) = "return()"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+        </svg>
+        <h2 >Mi Perfil</h2>
+
     </div>
-    <div class="navBar">
+    <div class="imgHeader">
+        <div class="return"></div>
+        <img src="assets/imgs/limaOrdenes.png" alt="logoLima" class="LogoLima" *ngIf="goProfileNow == false">
+        <img routerLink="profile" src="assets/imgs/avatar.png" (click)="goConfigProfile()" alt="mi cuenta" class="avatarImg">
+    </div>
+    <div class="navBar" *ngIf="goProfileNow == false">
         <a [ngClass]="{ancorNav: this.optionSelect == 1}" (click)="option(1)" routerLink="ordersAvailable">Disponibles</a>
         <a [ngClass]="{ancorNav: this.optionSelect == 2}" (click)="option(2)" routerLink="ordersTaken">Tomada</a>
         <a [ngClass]="{ancorNav: this.optionSelect == 3}" (click)="option(3)" routerLink="ordersDelivered">Entregadas</a>
