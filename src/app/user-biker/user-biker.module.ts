@@ -20,7 +20,7 @@ import { UserProfileSettingsComponent } from './pages/user-profile-settings/user
     CommonModule,
     UserBikerRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ]
 })
 export class UserBikerModule { }

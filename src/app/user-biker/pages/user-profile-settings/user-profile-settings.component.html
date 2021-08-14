@@ -10,8 +10,8 @@
 
     <div class="infoProfile">
         <img [src]="imgProfile" alt="userFoto">
-        <p class="name">Luis Alejandro Banegas</p>
-        <p class="email">Luisbanegas@gmail.com</p>
+        <p class="name">{{infoBiker.primerNombre}}</p>
+        <p class="email">{{infoBiker.email}}</p>
     </div>
     <div class="optionsProfile">
         <p>Configuracion de la cuenta</p>
@@ -54,16 +54,16 @@
 
         <p class="infoUser">Informacion usuario</p>
         <p class="txtNombre">Nombre: </p>
-        <input type="text" class="inputName" placeholder="Nombre" readonly>
-        <input type="text" class="inputName" placeholder="Apellido" readonly>
+        <input type="text" class="inputName" [(ngModel)]="this.infoBiker.primerNombre" placeholder="Nombre" readonly>
+        <input type="text" class="inputName" [(ngModel)]="this.infoBiker.primerApellido" placeholder="Apellido" readonly>
         <p class="txtDomicilio">Domicilio: </p>
-        <input type="text" class="inputProfile" placeholder="Ubicacion" readonly>
+        <input type="text" class="inputProfile" [(ngModel)]="this.infoBiker.domicilio" placeholder="Ubicacion" readonly>
         <p class="txtEmail">Email: </p>
         
-        <input type="text" class="inputProfile" placeholder="Correo" required>
-        <p class="editEmail">Cambiar correo</p>
-        <input type="text" class="inputProfile" placeholder="Nuevo Correo" required>
-        <button class="btnSaveProfile">Guardar Cambios</button>
+        <input type="text" class="inputProfile" [(ngModel)]="this.infoBiker.email" placeholder="Correo" readonly>
+        <p class="editEmail" (click)="viewInputNewEmail()">Cambiar correo</p>
+        <input type="text" *ngIf="viewInputEmail" [formControl]="this.newEmail" class="inputProfile" placeholder="Nuevo Correo" required>
+        <button class="btnSaveProfile" (click)="saveNewEmail()">Guardar Cambios</button>
         <div class="barra"></div>
     </div>
 
@@ -72,10 +72,16 @@
         <div class="barra"></div>
         <p class="textConfigSecurity">Configuración seguridad</p>
         <p class="txtPass">Contraseña</p>
-        <input class="inputSecurity" type="text" placeholder="Escriba la contraseña actual">
-        <input class="inputSecurity" type="text" placeholder="Escriba la contraseña nueva">
-        <input class="inputSecurity" type="text" placeholder="Escriba la contraseña otra vez">
-        <button class="savePass">Cambiar contraseña</button>
+        <form [formGroup]="formPutPassword">
+            <input class="inputSecurity" type="password" formControlName="passBiker" placeholder="Escriba la contraseña actual">
+            <input class="inputSecurity" type="password" formControlName="newPassword" placeholder="Escriba la contraseña nueva">
+            <input class="inputSecurity" type="password" formControlName="newPasswordConfirm" placeholder="Escriba la contraseña otra vez">
+
+            <p class="msjError" *ngIf="passBiker?.status == 'INVALID' && (passBiker?.touched || passBiker?.dirty)">**La Contraseña debe tener al menos 1 digito, 1 letra mayuscula, 1 letra minuscula y 1 caracter especial</p>
+            <p class="msjError" *ngIf="newPassword?.value != newPasswordConfirm?.value && (newPasswordConfirm?.touched || newPasswordConfirm?.dirty)">**Las Contraseñas no coinciden.</p>
+            
+            <button class="savePass" (click)="saveNewPassword()" type="submit" *ngIf="this.formPutPassword.valid">Cambiar contraseña</button>
+        </form>
         <div class="barra"></div>
     </div>
 
