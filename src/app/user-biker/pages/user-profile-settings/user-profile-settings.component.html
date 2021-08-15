@@ -1,35 +1,91 @@
 <div class="contProfile" >
 
-    <div class="textProfile">
+    <!-- <div class="textProfile">
         <svg (click) = "return()"  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
         </svg>
         <h2>Mi Perfil</h2>
         <div class="barra"></div>
-    </div>
+    </div> -->
 
     <div class="infoProfile">
         <img [src]="imgProfile" alt="userFoto">
-        <p class="name">Luis Alejandro Banegas</p>
-        <p class="email">Luisbanegas@gmail.com</p>
+        <p class="name">{{infoBiker.primerNombre}}</p>
+        <p class="email">{{infoBiker.email}}</p>
     </div>
     <div class="optionsProfile">
         <p>Configuracion de la cuenta</p>
-        <button (click)="goPhotoProfile()"  [ngClass]="{btnConfig: clickBtn == 1}" type="button">Fotografia</button>
-        <button (click)="goProfile()" [ngClass]="{btnConfig: clickBtn == 2}" type="button">Perfil</button>
-        <button (click)="goSecurityProfile()" [ngClass]="{btnConfig: clickBtn == 3}" type="button">Seguridad</button>
+        <button (click)="goPhotoProfile()"  [ngClass]="{btnConfig: clickBtn == 1}" type="button">Fotografia<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg></button>
+        <button (click)="goProfile()" [ngClass]="{btnConfig: clickBtn == 2}" type="button">Perfil<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg></button>
+        <button (click)="goSecurityProfile()" [ngClass]="{btnConfig: clickBtn == 3}" type="button">Seguridad<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+          </svg></button>
     </div>
-
+    <!-- config photo -->
     <div class="configPhotoProfile" *ngIf="clickBtn == 1">
-
-        <input class="inputImg" type="file"  (click) = "imgsUpload($event)">
+        <div class="barra"></div>
+        <p class="textConfigPhoto">Configuracion fotografia</p>
+        <p class="txtUploadPhoto">Subir fotografia de perfil: </p>
+        <input class="inputImg" type="file" id="imgFile"  (change) = "imgsUpload($event)">
+        <label for="imgFile"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+            <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+            <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708l3-3z"/>
+        </svg> Subir imagen</label>
         <div class="imgPrev">
-            <img [src]="previsualizacion" >
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-image" viewBox="0 0 16 16">
+                <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                <path d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z"/>
+            </svg> -->
+            <img [src]="previsualizacion" alt="nueva fotografia perfil" >
             
         </div>
+        
+        <button class="saveImg" (click)="saveNewImg()">Guardar Imagen</button>
+        <div class="barra"></div>
+    </div>
+    
+    <!-- config profile -->
+    <div class="profileUser" *ngIf="clickBtn == 2">
+        <div class="barra"></div>
+
+        <p class="infoUser">Informacion usuario</p>
+        <p class="txtNombre">Nombre: </p>
+        <input type="text" class="inputName" [(ngModel)]="this.infoBiker.primerNombre" placeholder="Nombre" readonly>
+        <input type="text" class="inputName" [(ngModel)]="this.infoBiker.primerApellido" placeholder="Apellido" readonly>
+        <p class="txtDomicilio">Domicilio: </p>
+        <input type="text" class="inputProfile" [(ngModel)]="this.infoBiker.domicilio" placeholder="Ubicacion" readonly>
+        <p class="txtEmail">Email: </p>
+        
+        <input type="text" class="inputProfile" [(ngModel)]="this.infoBiker.email" placeholder="Correo" readonly>
+        <p class="editEmail" (click)="viewInputNewEmail()">Cambiar correo</p>
+        <input type="text" *ngIf="viewInputEmail" [formControl]="this.newEmail" class="inputProfile" placeholder="Nuevo Correo" required>
+        <button class="btnSaveProfile" (click)="saveNewEmail()">Guardar Cambios</button>
+        <div class="barra"></div>
     </div>
 
-    <!-- <p>cerrar sesion</p> -->
+    <!-- Security count -->
+    <div class="configSecurity" *ngIf="clickBtn == 3">
+        <div class="barra"></div>
+        <p class="textConfigSecurity">Configuración seguridad</p>
+        <p class="txtPass">Contraseña</p>
+        <form [formGroup]="formPutPassword">
+            <input class="inputSecurity" type="password" formControlName="passBiker" placeholder="Escriba la contraseña actual">
+            <input class="inputSecurity" type="password" formControlName="newPassword" placeholder="Escriba la contraseña nueva">
+            <input class="inputSecurity" type="password" formControlName="newPasswordConfirm" placeholder="Escriba la contraseña otra vez">
+
+            <p class="msjError" *ngIf="passBiker?.status == 'INVALID' && (passBiker?.touched || passBiker?.dirty)">**La Contraseña debe tener al menos 1 digito, 1 letra mayuscula, 1 letra minuscula y 1 caracter especial</p>
+            <p class="msjError" *ngIf="newPassword?.value != newPasswordConfirm?.value && (newPasswordConfirm?.touched || newPasswordConfirm?.dirty)">**Las Contraseñas no coinciden.</p>
+            
+            <button class="savePass" (click)="saveNewPassword()" type="submit" *ngIf="this.formPutPassword.valid">Cambiar contraseña</button>
+        </form>
+        <div class="barra"></div>
+    </div>
+
+    <p class="txtExit">cerrar sesion</p>
 
 </div>
 
