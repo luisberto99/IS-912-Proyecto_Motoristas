@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { RegisterLoginService } from 'src/app/services/register-login/register-login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,9 @@ export class RegisterComponent implements OnInit {
     passwordConfirm: new FormControl("",[Validators.required, Validators.minLength(8),Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')]),
     
   });
-  constructor() { }
+
+  stateRegister = false;
+  constructor(private registerService:RegisterLoginService,private route:Router) { }
 
   ngOnInit(): void {
   }
@@ -28,8 +31,25 @@ export class RegisterComponent implements OnInit {
 
 
   registrar(){
-    console.log(this.formRegister.value);
-    console.log(this.formRegister.valid);
+    // console.log(this.formRegister.value);
+    // console.log(this.formRegister.valid);
+
+    this.registerService.registrarNuevoMotorista(this.formRegister.value).subscribe(res =>{
+      console.log();
+      if(!res.result){
+        this.formRegister.reset();
+        this.stateRegister = true;
+        
+      }else{
+        this.formRegister.reset();
+        this.stateRegister = false;
+        // console.log("usuario valido");
+        this.route.navigate(['/login']);
+        
+      }
+      
+
+    })
     
   }
 
