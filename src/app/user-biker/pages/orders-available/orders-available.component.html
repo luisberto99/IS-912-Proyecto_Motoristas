@@ -76,12 +76,12 @@
         <p>Detalle Orden</p>
         <div class="barra"></div>
     </div>
-
+    
     <div class="bodyModal">
         <p class="textEmpre"><b>Cliente: </b>{{ordenView.nombreCliente}}</p>
         <p class="textEmpre"><b>Direccion: </b>{{ordenView.ubicacionEntrega}}</p>
-        <p class="textEmpre"><b>Empresa: </b>{{"ordenView.nombreEmpresaDistribuye"}}</p>
-
+        <p class="textEmpre"><b>Empresa: </b>{{ordenView.nombreEmpresaDistribuye}}</p>
+        
         <div class="products">
             <p><b>Productos:</b></p>
             <table>
@@ -107,7 +107,7 @@
         </div>
 
         <p class="textCost"><b>Renumeracion:</b> 30 Lempiras.</p>
-        <button class="btnOrden" type="button" *ngIf="!selectOrden"  (click)="tomarOrden(ordenView)">Tomar Orden</button>
+        <button class="btnOrden" type="button" *ngIf="!selectOrden"  (click)="getOrden(ordenView)">Tomar Orden</button>
 
     </div>
 </div>

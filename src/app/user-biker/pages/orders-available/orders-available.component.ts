@@ -32,7 +32,7 @@ export class OrdersAvailableComponent implements OnInit {
   ordenes = [{
     _id: "",
     comisionAdministrador: "",
-    comisionMotorista: 0,
+    comisionMotorista: 2,
     coordenadasUbicacionOrden: "",
     estadoOrden: "",
     fechaOrden: "",
@@ -61,7 +61,6 @@ export class OrdersAvailableComponent implements OnInit {
       // console.log(result);
       
       this.ordenes = result;
-      console.log(this.ordenes[1].ubicacionEntrega);
       
     })
 
@@ -82,19 +81,7 @@ export class OrdersAvailableComponent implements OnInit {
     this.serviceShared.guardarData(ordenView);
     this.selectOrden= true;
 
-    let user = `${window.localStorage.getItem('user')}`;
-
-    this.ordenesService.obtenerDatosMotorista(user).subscribe(res =>{
-
-      this.ordenesService.asignarMotoristaOrden({idMotorista:user,
-        nombreMotorista:res.primerNombre,
-        apellido:res.primerApellido,
-        idOrden:""}).subscribe(result =>{
-          console.log(result);
-          
-        })
-
-    })
+    
   }
   
   return(){
@@ -123,5 +110,23 @@ export class OrdersAvailableComponent implements OnInit {
       this.selectOrden = res.result;
       
     });
+  }
+
+  getOrden(orden:any){
+    let user = `${window.localStorage.getItem('user')}`;
+    console.log(orden._id);
+    
+    this.ordenesService.obtenerDatosMotorista(user).subscribe(res =>{
+
+      this.ordenesService.asignarMotoristaOrden({idMotorista:user,
+        nombreMotorista:res.primerNombre,
+        apellido:res.primerApellido,
+        idOrden:orden._id}).subscribe(result =>{
+          console.log(result);
+          
+          this.ngOnInit();
+        })
+
+    })
   }
 }
