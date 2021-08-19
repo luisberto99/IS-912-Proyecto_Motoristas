@@ -8,6 +8,7 @@ import { OrdersDeliveredComponent } from './pages/orders-delivered/orders-delive
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { UserProfileSettingsComponent } from './pages/user-profile-settings/user-profile-settings.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { UserProfileSettingsComponent } from './pages/user-profile-settings/user
     UserBikerRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    GoogleMapsModule
   ]
 })
 export class UserBikerModule { }

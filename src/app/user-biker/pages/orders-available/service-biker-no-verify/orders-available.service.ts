@@ -127,9 +127,38 @@ export class OrdersAvailableService {
   Motorista:''
 }];
 
+ordenesBikerNoVerificado = [{
+  _id: "22",
+  comisionAdministrador: 200,
+  comisionMotorista:30,
+  coordenadasUbicacionOrden: "",
+  // estadoOrden: "Disponible",
+  fechaOrden: "2020/03/18",
+  impuestoOrden: 30,
+  nombreCliente: "Jose",
+  nombreEmpresaDistribuye: "Empresa de prueba.",
+  productosOrden: [{
+      cantidad: "1",
+      nombreProducto: "producto#1",
+      precio: 10
+    },{
+      cantidad: "1",
+      nombreProducto: "producto#2",
+      precio: 10
+    },{
+      cantidad: "1",
+      nombreProducto: "producto#3",
+      precio: 10
+    }
+  ],
+  totalCostoOrden: 1800,
+  ubicacionEntrega: "Res. Centroamerica",
+  _idEmpresaDistribuye: "",
+}]
+
   constructor() { }
 
   data(){
-    return this.ordenes;
+    return this.ordenesBikerNoVerificado;
   }
 }
