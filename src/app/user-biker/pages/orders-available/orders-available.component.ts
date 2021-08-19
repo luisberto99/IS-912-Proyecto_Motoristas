@@ -50,6 +50,18 @@ export class OrdersAvailableComponent implements OnInit {
    
   }]
 
+  title = "Ubicacion";
+
+  position = {
+    lat: 14.0766772,
+    lng: -87.2007709
+
+  }
+
+  label = {
+    color: 'red',
+    text: 'Marcador'
+  }
   constructor(private serviceBikerNoVerify: OrdersAvailableService, 
               private serviceShared:ServiceSharedService,
               private ordenesService:OrdenesService) { }

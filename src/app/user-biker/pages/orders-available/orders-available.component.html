@@ -102,7 +102,10 @@
 
         <div class="location">
             <p class="textUbicacion"><b>Ubicacion:</b></p>
-            <img src="assets/imgs/map.png" alt="map">
+            <google-map width ="100%" heigth="200px" [center]="position">
+                <map-marker [position]="position" [label]="label" [title]="title" ></map-marker>
+            </google-map>
+            <!-- <img src="assets/imgs/map.png" alt="map"> -->
 
         </div>
 
@@ -111,3 +114,4 @@
 
     </div>
 </div>
+
