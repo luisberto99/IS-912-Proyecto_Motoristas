@@ -1,10 +1,14 @@
 <div  class="contOrders" [ngClass]="{ocult:viewProducto}">
-    <p class="mjsCont">Bienvenido Luis, seleccione la orden de su interes, para ver los detalles.</p>
+
+    
+    <div *ngIf="userBikerVerify == false">
+    <p class="mjsCont">Bienvenido, Es un gusto tener con nosotros, te invitamos a que te relaciones con la plataforma, revisa la Orden de prueba y click sobre ella para ver los detalles.</p>
+        
     <div *ngFor="let orden of data">
         <div class="rowContainer" (click)="viewDetail(orden)">
 
             <div class="itemNum">
-                <h4>{{orden.id}}</h4>
+                <h4>{{data.indexOf(orden)+1}}</h4>
             </div>
 
             <div class="itemData">
@@ -18,7 +22,7 @@
 
                 <div class="contList">
                     <p class="products">Productos:</p>
-                    <ul *ngFor="let product of orden.productos">
+                    <ul *ngFor="let product of orden.productosOrden">
                         <li>{{product.nombreProducto}}</li>
                         <!-- <li>Lorem Ipsum</li>
                         <li>Lorem Ipsum</li>
@@ -26,6 +30,37 @@
                     </ul>
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <div *ngIf="userBikerVerify">
+        <div *ngFor="let orden of ordenes">
+            <div class="rowContainer" (click)="viewDetail(orden)">
+
+                <div class="itemNum">
+                    <h4>{{ordenes.indexOf(orden)+1}}</h4>
+                </div>
+
+                <div class="itemData">
+                    <div class="contDirection">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                            <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                            <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                        </svg>
+                        <p class="textLocation">{{orden.ubicacionEntrega}}</p>
+                    </div>
+
+                    <div class="contList">
+                        <p class="products">Productos:</p>
+                        <ul *ngFor="let producto of orden.productosOrden">
+                            <li>{{producto.nombreProducto}}</li>
+                        </ul>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
@@ -45,6 +80,7 @@
     <div class="bodyModal">
         <p class="textEmpre"><b>Cliente: </b>{{ordenView.nombreCliente}}</p>
         <p class="textEmpre"><b>Direccion: </b>{{ordenView.ubicacionEntrega}}</p>
+        <p class="textEmpre"><b>Empresa: </b>{{"ordenView.nombreEmpresaDistribuye"}}</p>
 
         <div class="products">
             <p><b>Productos:</b></p>
@@ -53,13 +89,13 @@
                     <tr>
                         <th>Producto</th>
                         <th>Cantidad</th>
-                        <th>E. Distribuye</th>
+                        <th>Nota</th>
                     </tr>
                 </thead>
-                <tr *ngFor="let product of ordenView.productos">
+                <tr *ngFor="let product of ordenView.productosOrden">
                     <td>{{product.nombreProducto}}</td>
                     <td>{{product.cantidad}}</td>
-                    <td>{{product.empresaDistribuye}}</td>
+                    <td>Notaa</td>
                 </tr>                
             </table>
         </div>

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./layout-default.component.sass']
 })
 export class LayoutDefaultComponent implements OnInit {
-  optionSelect:number = 0;
+  optionSelect:number = 1;
   goProfileNow=false;
   constructor(private route:Router) { }
 
