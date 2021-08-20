@@ -9,13 +9,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { UserProfileSettingsComponent } from './pages/user-profile-settings/user-profile-settings.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { MapOrdersAvailableComponent } from './pages/map-orders-available/map-orders-available.component';
 
 @NgModule({
   declarations: [
     OrdersAvailableComponent,
     OrdersTakenComponent,
     OrdersDeliveredComponent,
-    UserProfileSettingsComponent
+    UserProfileSettingsComponent,
+    MapOrdersAvailableComponent
   ],
   imports: [
     CommonModule,

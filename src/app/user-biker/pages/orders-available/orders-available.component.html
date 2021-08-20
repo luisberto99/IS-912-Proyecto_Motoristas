@@ -102,9 +102,13 @@
 
         <div class="location">
             <p class="textUbicacion"><b>Ubicacion:</b></p>
-            <google-map width ="100%" heigth="200px" [center]="position">
+
+            <div *ngIf="viewProducto">
+                <app-map-orders-available [lat]="coordenadas.lat" [long]="coordenadas.lng"></app-map-orders-available>
+            </div>
+            <!-- <google-map width ="100%" heigth="200px" [center]="position">
                 <map-marker [position]="position" [label]="label" [title]="title" ></map-marker>
-            </google-map>
+            </google-map> -->
             <!-- <img src="assets/imgs/map.png" alt="map"> -->
 
         </div>

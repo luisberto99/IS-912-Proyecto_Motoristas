@@ -4,7 +4,7 @@
     <div> <!-- for -->
         <div class="rowContainer" *ngFor="let ordenTerminada of ordenesTerminadas">
             <div class="itemNum">
-                <h4>{{ordenTerminada.id}}</h4>
+                <h4>{{ordenesTerminadas.indexOf(ordenTerminada)+1}}</h4>
             </div>
 
             <div class="itemData">
@@ -18,12 +18,12 @@
 
                 <div class="contList">
                     <p class="products">Productos:</p>
-                    <ul *ngFor="let product of ordenTerminada.productos">
+                    <ul *ngFor="let product of ordenTerminada.productosOrden">
                         <li>{{product.nombreProducto}}</li>
                     </ul>
                 </div>
-                <p><b>Fecha: </b>{{ordenTerminada.fechaRealizada}}</p>
-                <p><b>Renumeracion: </b>L. 30</p>
+                <p><b>Fecha: </b>{{ordenTerminada.fechaOrden}}</p>
+                <p><b>Comision: </b>L. 30.00</p>
             </div>
         </div>
     </div>

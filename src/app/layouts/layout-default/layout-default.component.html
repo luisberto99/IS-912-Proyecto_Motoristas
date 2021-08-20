@@ -9,7 +9,7 @@
     <div class="imgHeader">
         <div class="return"></div>
         <img src="assets/imgs/limaOrdenes.png" alt="logoLima" class="LogoLima" *ngIf="goProfileNow == false">
-        <img routerLink="profile" src="assets/imgs/avatar.png" (click)="goConfigProfile()" alt="mi cuenta" class="avatarImg" *ngIf="goProfileNow == false">
+        <img routerLink="profile" [src]="imgProfileBiker" (click)="goConfigProfile()" alt="mi cuenta" class="avatarImg" *ngIf="goProfileNow == false">
     </div>
     <div class="navBar" *ngIf="goProfileNow == false">
         <a [ngClass]="{ancorNav: this.optionSelect == 1}" (click)="option(1)" routerLink="ordersAvailable">Disponibles</a>

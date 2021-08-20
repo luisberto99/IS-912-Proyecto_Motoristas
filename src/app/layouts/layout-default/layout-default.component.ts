@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { OrdenesService } from 'src/app/services/ordenes/ordenes.service';
 
 @Component({
   selector: 'app-layout-default',
@@ -9,9 +10,16 @@ import { Router } from '@angular/router';
 export class LayoutDefaultComponent implements OnInit {
   optionSelect:number = 1;
   goProfileNow=false;
-  constructor(private route:Router) { }
+  imgProfileBiker = "assets/imgs/user.png";
+  constructor(private route:Router, private ordersService:OrdenesService) { }
 
   ngOnInit(): void {
+    let user = `${window.localStorage.getItem('user')}`;
+
+    this.ordersService.getImgProfile(user).subscribe(res =>{
+      // console.log(res);
+      this.imgProfileBiker = res.imagenPerfil;
+    })
   }
 
   option(num:number){
