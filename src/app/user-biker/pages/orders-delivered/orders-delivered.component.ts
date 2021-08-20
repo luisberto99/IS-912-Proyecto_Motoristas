@@ -41,7 +41,7 @@ export class OrdersDeliveredComponent implements OnInit {
 
     this.ordersService.ordersDeliveredBiker(this.user).subscribe(res =>{
       this.ordenesTerminadas = res;
-      console.log(this.ordenesTerminadas);
+      // console.log(this.ordenesTerminadas);
     });
     
   }

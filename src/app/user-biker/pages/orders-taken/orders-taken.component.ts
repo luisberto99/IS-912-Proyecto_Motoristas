@@ -87,7 +87,7 @@ export class OrdersTakenComponent implements OnInit {
     // this.serviceShared.addOrdenTerminada(this.ordenTaken);
 
     this.ordenesService.updateStateOrdenTaken({idOrden:this.ordenTaken._id,estado:'Entregada'}).subscribe(res =>{
-      console.log(res);
+      // console.log(res);
       this.ngOnInit();
       this.existSelectOrden = false;
       this.route.navigate(['/biker/ordersAvailable'])

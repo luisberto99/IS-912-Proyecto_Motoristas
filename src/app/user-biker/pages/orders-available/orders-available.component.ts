@@ -52,7 +52,10 @@ export class OrdersAvailableComponent implements OnInit {
   }]
 
   title = "Ubicacion";
-
+  coordenadas = {
+    lat:0,
+    lng:0
+  };
   position = {
     lat: 14.0766772,
     lng: -87.2007709
@@ -84,12 +87,13 @@ export class OrdersAvailableComponent implements OnInit {
 
   viewDetail(orden:any){
 
-    let coordenadas = orden.coordenadasUbicacionOrden.split(",")
-
+    let coordends = orden.coordenadasUbicacionOrden.split(",")
+    this.coordenadas.lat = parseFloat(coordends[0]);
+    this.coordenadas.lng= parseFloat(coordends[1]);
+    console.log(this.coordenadas);
+    
     this.viewProducto = true;
     this.ordenView = orden;
-    this.position.lat = parseFloat(coordenadas[0])
-    this.position.lng = parseFloat(coordenadas[1])
     this.ngOnInit();
     
   }
