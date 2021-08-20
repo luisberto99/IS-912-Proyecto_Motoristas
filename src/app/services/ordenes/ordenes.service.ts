@@ -55,5 +55,10 @@ export class OrdenesService {
     return this.http.get<any>(url);
   }
 
+  getImgProfile(idBiker:string){
+    // dateurl = dateurl.split('"')[1]
+    let url = `http://localhost:3000/motoristas/obtenerImagenPerfil/${idBiker}`
+    return this.http.get<any>(url);
+  }
 }
 
