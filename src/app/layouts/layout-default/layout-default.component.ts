@@ -10,7 +10,7 @@ import { OrdenesService } from 'src/app/services/ordenes/ordenes.service';
 export class LayoutDefaultComponent implements OnInit {
   optionSelect:number = 1;
   goProfileNow=false;
-  imgProfileBiker = "assets/imgs/user.png";
+  imgProfileBiker = "/assets/imgs/user.png";
   constructor(private route:Router, private ordersService:OrdenesService) { }
 
   ngOnInit(): void {
@@ -18,7 +18,10 @@ export class LayoutDefaultComponent implements OnInit {
 
     this.ordersService.getImgProfile(user).subscribe(res =>{
       // console.log(res);
-      this.imgProfileBiker = res.imagenPerfil;
+      if( res.imagenPerfil != ""){
+
+        this.imgProfileBiker = res.imagenPerfil;
+      }
     })
   }
 
