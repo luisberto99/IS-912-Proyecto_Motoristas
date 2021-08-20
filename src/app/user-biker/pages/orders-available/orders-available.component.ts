@@ -20,6 +20,7 @@ export class OrdersAvailableComponent implements OnInit {
     ubicacionEntrega: '',
     nombreCliente:'',
     nombreEmpresaDistribuye: " ",
+    coordenadasUbicacionOrden:"",
     productosOrden: [{
       id:'',
       idProducto:'',
@@ -75,15 +76,21 @@ export class OrdersAvailableComponent implements OnInit {
       this.ordenes = result;
       
     })
-
+    
     this.verifyUser();
 
     this.verifyOrdersTaken();
   }
 
   viewDetail(orden:any){
+
+    let coordenadas = orden.coordenadasUbicacionOrden.split(",")
+
     this.viewProducto = true;
     this.ordenView = orden;
+    this.position.lat = parseFloat(coordenadas[0])
+    this.position.lng = parseFloat(coordenadas[1])
+    this.ngOnInit();
     
   }
   

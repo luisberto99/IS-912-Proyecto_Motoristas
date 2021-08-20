@@ -34,4 +34,15 @@ export class OrdenesService {
     let url= `http://localhost:3000/motoristas/obtenerMotorista/${id}`;
     return this.http.get<any>(url);
   }
+
+  ordenTakenNow(idMotorista:string){
+    let url= `http://localhost:3000/ordenes/ordenTomadaMotorista/${idMotorista}`;
+    return this.http.get<any>(url);
+
+  }
+
+  updateStateOrdenTaken(data:any){
+    let url= `http://localhost:3000/ordenes/updateOrden`;
+    return this.http.put<any>(url,data);
+  }
 }
