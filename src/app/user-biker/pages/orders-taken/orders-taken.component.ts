@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ServiceSharedService } from '../../services/service-shared.service';
 import { FormControl, Validators } from '@angular/forms';
 import { OrdenesService } from 'src/app/services/ordenes/ordenes.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-orders-taken',
   templateUrl: './orders-taken.component.html',
@@ -46,7 +47,7 @@ export class OrdersTakenComponent implements OnInit {
     color: 'red',
     text: 'Marcador'
   }
-  constructor(private serviceShared:ServiceSharedService, private ordenesService:OrdenesService) { }
+  constructor(private serviceShared:ServiceSharedService, private ordenesService:OrdenesService, private route:Router) { }
 
   ngOnInit(): void {
     // this.serviceShared.disparadorContenidoOrden.subscribe(data =>{
@@ -88,7 +89,8 @@ export class OrdersTakenComponent implements OnInit {
     this.ordenesService.updateStateOrdenTaken({idOrden:this.ordenTaken._id,estado:'Entregada'}).subscribe(res =>{
       console.log(res);
       this.ngOnInit();
-
+      this.existSelectOrden = false;
+      this.route.navigate(['/biker/ordersAvailable'])
     })
 
   }
@@ -99,6 +101,7 @@ export class OrdersTakenComponent implements OnInit {
 
     this.ordenesService.cuentaConOrdenTomada(user).subscribe(res =>{
       this.existSelectOrden = res.result;
+      
       // console.log(this.existSelectOrden);
       /* SI EXISTE UNA ORDEN TOMADA ACTUALMENTE PARA SU ENTREGA, LA BUSCAMOS PARA MOSTRARLA */
       if(this.existSelectOrden){
@@ -112,13 +115,16 @@ export class OrdersTakenComponent implements OnInit {
   getNowOrdenTaken(user:string){
 
     this.ordenesService.ordenTakenNow(user).subscribe(result =>{
-      this.ordenTaken = result.orden;
+      // console.log(result);
+      
+      this.ordenTaken = result;
       this.coordinatesOrden = this.ordenTaken.coordenadasUbicacionOrden.split(",")
       this.position.lat = parseFloat(this.coordinatesOrden[0])  
       this.position.lng = parseFloat(this.coordinatesOrden[1])  
       /* FORMATEAMOS EL COSTO, PARA MOSTRARLO */
       this.clearCost(this.ordenTaken.totalCostoOrden);
       console.log(this.ordenTaken.informacionPago.numeroAutorizacionPago);
+      // console.log(this.ordenTaken);
       
 
     })

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceSharedService } from './../../services/service-shared.service';
-
+import { OrdenesService } from 'src/app/services/ordenes/ordenes.service';
 
 @Component({
   selector: 'app-orders-delivered',
@@ -9,34 +9,43 @@ import { ServiceSharedService } from './../../services/service-shared.service';
 })
 export class OrdersDeliveredComponent implements OnInit {
   ordenesTerminadas:any = [{
-    id: "",
-    idOrden: "",
-    idCliente: '',
-    ubicacionEntrega: "",
-    nombreCliente: "a",
-    coordenadas: "",
-    fechaRealizada:"",
-    informacionPago:[],
-    codigoVerificacion: 1,
-    productos: [{
-        id:'',
-        idProducto:'',
-        nombreProducto: "",
-        cantidad:"",
-        empresaDistribuye: "",
-        idEmpresaDistribuye: ""
-    }], 
-    nota: "",
+    _id: "",
+    comisionAdministrador: "",
+    comisionMotorista: 2,
+    coordenadasUbicacionOrden: "",
     estadoOrden: "",
-    Motorista:''
+    fechaOrden: "",
+    impuestoOrden: 0,
+    nombreCliente: "",
+    nombreEmpresaDistribuye: " ",
+    productosOrden: [{
+        cantidad: "",
+        nombreProducto: "",
+        precio: 0
+    }],
+    totalCostoOrden: 0,
+    ubicacionEntrega: "",
+    _idEmpresaDistribuye: "",
+    informacionPago:{numeroAutorizacionPago:0}
   }];
-
-  constructor( private serviceShared: ServiceSharedService) { }
+  user = "";
+  constructor( private serviceShared: ServiceSharedService,
+              private ordersService:OrdenesService
+    ) { }
 
   ngOnInit(): void {
-    this.ordenesTerminadas = this.serviceShared.getOrdenesTerminadas()
+    // this.ordenesTerminadas = this.serviceShared.getOrdenesTerminadas()
     // console.log(this.ordenesTerminadas);
+   
+    this.user = `${window.localStorage.getItem('user')}`;
+
+    this.ordersService.ordersDeliveredBiker(this.user).subscribe(res =>{
+      this.ordenesTerminadas = res;
+      console.log(this.ordenesTerminadas);
+    });
     
   }
+
+
 
 }

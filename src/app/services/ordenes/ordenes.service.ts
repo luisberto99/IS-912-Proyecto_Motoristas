@@ -24,25 +24,36 @@ export class OrdenesService {
     let url = `http://localhost:3000/ordenes/${idMotorista}/verificarOrdenMotorista`;
     return this.http.get<any>(url);
   }
-
+  /* ASIGNAR MOTORISTA A ORDEN DISPONIBLE */
   asignarMotoristaOrden(data:any){
     let url = "http://localhost:3000/ordenes/asignarMotorista"
     return this.http.put<any>(url,data);
   }
 
+  /* OBTENER IFNROMACION RELEVANTE DEL MOTORISTA */
   obtenerDatosMotorista(id:string){
     let url= `http://localhost:3000/motoristas/obtenerMotorista/${id}`;
     return this.http.get<any>(url);
   }
 
+  /* OBTENER LA ORDEN TOMADA (DE EXISTIR),PARA MOSTRARLA */
   ordenTakenNow(idMotorista:string){
     let url= `http://localhost:3000/ordenes/ordenTomadaMotorista/${idMotorista}`;
     return this.http.get<any>(url);
 
   }
 
+  /* ACTUALIZAR EL ESTADO DE UNA ORDEN */
   updateStateOrdenTaken(data:any){
     let url= `http://localhost:3000/ordenes/updateOrden`;
     return this.http.put<any>(url,data);
   }
+
+  /* OBTENER ORDENES ENTREGADAS DE UN MOTORISTA */
+  ordersDeliveredBiker(idMotorista:string){
+    let url= `http://localhost:3000/ordenes/ordenesEntregadas/${idMotorista}`;
+    return this.http.get<any>(url);
+  }
+
 }
+
