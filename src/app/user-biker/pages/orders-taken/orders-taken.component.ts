@@ -85,6 +85,12 @@ export class OrdersTakenComponent implements OnInit {
     // this.ordenTaken.estadoOrden = 'entregada';
     // this.serviceShared.addOrdenTerminada(this.ordenTaken);
 
+    this.ordenesService.updateStateOrdenTaken({idOrden:this.ordenTaken._id,estado:'Entregada'}).subscribe(res =>{
+      console.log(res);
+      this.ngOnInit();
+
+    })
+
   }
 
   /* VERIFICAMOS SI EL MOTORISTA CUENTA CON UNA ORDEN TOMADA, DE NO SER ASI, INVITAMOS A QUE TOME ALGUNA. */
@@ -93,7 +99,7 @@ export class OrdersTakenComponent implements OnInit {
 
     this.ordenesService.cuentaConOrdenTomada(user).subscribe(res =>{
       this.existSelectOrden = res.result;
-      console.log(this.existSelectOrden);
+      // console.log(this.existSelectOrden);
       /* SI EXISTE UNA ORDEN TOMADA ACTUALMENTE PARA SU ENTREGA, LA BUSCAMOS PARA MOSTRARLA */
       if(this.existSelectOrden){
         this.getNowOrdenTaken(user);
