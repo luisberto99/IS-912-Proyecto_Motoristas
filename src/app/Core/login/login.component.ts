@@ -72,8 +72,13 @@ export class LoginComponent implements OnInit {
       if(res.result){
         let localStorage = window.localStorage;
         localStorage.setItem('user',res.id);
+        this.loginService.actualizarEstadoMotorista({id:res.id,estado:'Disponible'}).subscribe(ress =>{
+          console.log(ress);
+          
+        })
         this.formLogin.reset();
         this.route.navigate(['/biker/ordersAvailable']);
+
       }else{
         this.viewErrorLogin = true;
         this.formLogin.reset();

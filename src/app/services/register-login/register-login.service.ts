@@ -24,4 +24,9 @@ export class RegisterLoginService {
     return this.http.post<any>(this.urlLogin,data);
   }
 
+  actualizarEstadoMotorista(data:any){
+    let url = "http://localhost:3000/motoristas/actualizarEstadoo"
+    return this.http.put<any>(url,data);
+  }
+
 }

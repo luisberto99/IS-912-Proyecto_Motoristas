@@ -4,6 +4,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ConfigProfileUserService } from 'src/app/Core/services/user-profile/config-profile-user.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { RegisterLoginService } from 'src/app/services/register-login/register-login.service';
+
 @Component({
   selector: 'app-user-profile-settings',
   templateUrl: './user-profile-settings.component.html',
@@ -31,7 +33,7 @@ export class UserProfileSettingsComponent implements OnInit {
     newPasswordConfirm: new FormControl("",[Validators.required, Validators.minLength(8),Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$')])
   });
 
-  constructor(private sanitizer: DomSanitizer, private route:Router, private userConfigService:ConfigProfileUserService) { }
+  constructor(private sanitizer: DomSanitizer, private route:Router, private userConfigService:ConfigProfileUserService, private  userService:RegisterLoginService) { }
 
   ngOnInit(): void {
     
@@ -191,5 +193,14 @@ export class UserProfileSettingsComponent implements OnInit {
     return this.formPutPassword.get('newPasswordConfirm');
   }
 
-  
+  exit(){
+    let user = `${window.localStorage.getItem('user')}`;
+
+    this.userService.actualizarEstadoMotorista({id:user,estado:'Desconectado'}).subscribe(res =>{
+      console.log(res);
+      
+    });
+
+    this.route.navigate(['/'])
+  } 
 }
