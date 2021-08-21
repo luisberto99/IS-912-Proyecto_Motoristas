@@ -53,6 +53,7 @@
                 <p *ngIf="this.formRegister.valid" class="msj">
                     <b>NOTA:</b>Pasaran a ser verificados sus datos por nuestro equipo y de ser validos, sera habilitado para trabajar con nosotros.
                 </p>
+                <p class="msj logintext" (click)="goLogin()" *ngIf="!this.formRegister.valid">¿Tiene una cuenta?, Ingresar con mi cuenta.</p>
             </div>
 
             <p class="msjError" *ngIf="stateRegister">**El correo ingresado, ya pertenece a una cuenta.**</p>

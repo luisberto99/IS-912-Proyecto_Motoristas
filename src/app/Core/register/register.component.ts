@@ -79,4 +79,8 @@ export class RegisterComponent implements OnInit {
   get apellido(){
     return this.formRegister.get('primerApellido');
   }
+
+  goLogin(){
+    this.route.navigate(['/login']);
+  }
 }
