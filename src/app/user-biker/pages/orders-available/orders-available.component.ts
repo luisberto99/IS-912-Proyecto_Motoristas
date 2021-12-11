@@ -25,7 +25,8 @@ export class OrdersAvailableComponent implements OnInit {
       id:'',
       idProducto:'',
       nombreProducto: "",
-      cantidad:"",
+      unidades:"",
+      nota: '',
     }],
     estadoOrden: ""
   }
@@ -41,9 +42,10 @@ export class OrdersAvailableComponent implements OnInit {
     nombreCliente: "",
     nombreEmpresaDistribuye: " ",
     productosOrden: [{
-        cantidad: "",
+        unidades: "",
         nombreProducto: "",
-        precio: 0
+        precio: 0,
+        nota: ''
     }],
     totalCostoOrden: 0,
     ubicacionEntrega: "",
@@ -74,7 +76,7 @@ export class OrdersAvailableComponent implements OnInit {
   // console.log(this.data);
 
     this.ordenesService.getOrdenesDisponbiles().subscribe(result =>{
-      // console.log(result);
+      //console.log(result);
       
       this.ordenes = result;
       
@@ -94,6 +96,8 @@ export class OrdersAvailableComponent implements OnInit {
     
     this.viewProducto = true;
     this.ordenView = orden;
+    console.log(this.ordenView.productosOrden);
+    
     this.ngOnInit();
     
   }

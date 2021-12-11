@@ -1,19 +1,19 @@
+<p class="msjOrdenTaken" *ngIf="existSelectOrden == false">
+    No existe orden seleccionada como tomada, para realizar su entrega. Porfavor seleccione una orden.</p>
 
-<p class="msjOrdenTaken" *ngIf="existSelectOrden == false">No existe orden seleccionada como tomada, para realizar su entrega. Porfavor seleccione una orden.</p>
+<div class="contOrders" *ngIf="existSelectOrden">
 
-<div class="contOrders"  *ngIf="existSelectOrden">
-    
-    <div class="contVist" >
+    <div class="contVist">
         <div class="msjPrinc">
             <p>Orden</p>
             <div class="barra"></div>
         </div>
-    
+
         <div class="bodyVist">
             <p class="textEmpre"><b>Cliente: </b>{{ordenTaken.nombreCliente}}</p>
             <p class="textEmpre"><b>Direccion: </b>{{ordenTaken.ubicacionEntrega}}</p>
             <p class="textEmpre"><b>Empresa vende: </b>{{ordenTaken.nombreEmpresaDistribuye}}</p>
-    
+
             <div class="products">
                 <p><b>Productos:</b></p>
                 <table>
@@ -24,33 +24,31 @@
                             <!-- <th>E. Distribuye</th> -->
                         </tr>
                     </thead>
-                    <tr *ngFor="let product of ordenTaken.productosOrden"> 
+                    <tr *ngFor="let product of ordenTaken.productosOrden">
                         <td>{{product.nombreProducto}}</td>
-                        <td>{{product.cantidad}}</td>
+                        <td>{{product.unidades}}</td>
                         <!-- <td>{{product.empresaDistribuye}}</td> -->
-                    </tr>                
+                    </tr>
                 </table>
             </div>
-    
+
             <div class="location">
                 <p class="textUbicacion"><b>Ubicacion:</b></p>
                 <!-- <img src="assets/imgs/map.png" alt="map"> -->
-                <google-map width ="100%" heigth="200px" [center]="position">
-                    <map-marker [position]="position" [label]="label" [title]="title" ></map-marker>
+                <google-map width="100%" heigth="200px" [center]="position">
+                    <map-marker [position]="position" [label]="label" [title]="title"></map-marker>
                 </google-map>
             </div>
             <p class="textCode">Al estar proximo a entregar su pedido, verificar los detalles de la factura con el cliente y solicitar e ingresar el codigo de verificacion entregado al cliente, para verificar y realizar exitosamente la entrega.</p>
             <p class="textCost"><b>Costo total orden: L. {{costClear}}.</b></p>
             <p class="textCost"><b>Comision entrega: L. 30.00.</b></p>
             <p><b>Codigo de factura, verificar:</b></p>
-            <input class="inputCode" [formControl]="codeForm" type="text" placeholder="Ingrese el codigo." required>
-            <p class="errorCode" *ngIf="codeForm.invalid && (codeForm?.touched || codeForm?.dirty)" >**Codigo invalido**</p>
 
-            <button class="btnOrden" type="button" *ngIf="codeForm.valid && codeForm.value == codigoverificacion" (click)="sucessOrden()"> Finalizar entrega</button>
-    
+            <button class="btnOrden" type="button" (click)="sucessOrden()"> Finalizar entrega</button>
+
         </div>
     </div>
-    
+
 
 
 </div>

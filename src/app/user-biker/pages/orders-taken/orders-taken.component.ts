@@ -23,7 +23,7 @@ export class OrdersTakenComponent implements OnInit {
     nombreCliente: "",
     nombreEmpresaDistribuye: " ",
     productosOrden: [{
-        cantidad: "",
+        unidades: "",
         nombreProducto: "",
         precio: 0
     }],
